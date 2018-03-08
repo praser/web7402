@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<img src="imagens/caelum.png" />
+	<img src="${ pageContext.request.contextPath }/imagens/caelum.png" />
 	<h2>Agenda de Contatos do Rubens</h2>
 	<hr />
