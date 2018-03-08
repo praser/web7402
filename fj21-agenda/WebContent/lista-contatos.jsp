@@ -30,7 +30,7 @@
 					</c:if>
 				</td>
 				<td>${ contato.endereco }</td>
-				<td><${ contato.dataNascimento.time }</td>
+				<td><fmt:formatDate value="${ contato.dataNascimento.time }" pattern="dd/MM/yyyy"/></td>
 			</tr>
 		</c:forEach>
 	</tbody>
