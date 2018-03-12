@@ -15,6 +15,7 @@
 					<th>Descrição</th>
 					<th>Finalização</th>
 					<th>Data Finalização</th>
+					<th>Ações</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,6 +34,7 @@
 						<td>
 							<fmt:formatDate value="${tarefa.dataFinalizacao.time}" pattern="dd/MM/yyyy"/>
 						</td>
+						<td><a href="removeTarefa?id=${tarefa.id}">Remover</a></td>
 				</c:forEach>
 			</tbody>
 		</table>	
