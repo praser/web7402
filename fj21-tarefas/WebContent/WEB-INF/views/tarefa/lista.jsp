@@ -23,9 +23,9 @@
 					<tr>
 						<td>${tarefa.id}</td>
 						<td>${tarefa.descricao}</td>
-						<td>
+						<td id="tarefa_${tarefa.id}">
 							<c:if test="${tarefa.finalizado eq false}">
-								Não finalizado
+								<a href="#" onClick="finalizaAgora(${tarefa.id})">Finalizar</a>
 							</c:if>
 							<c:if test="${tarefa.finalizado eq true}">
 								Finalizado
@@ -42,6 +42,15 @@
 						</td>
 				</c:forEach>
 			</tbody>
-		</table>	
+		</table>
+		<script type="text/javascript" src="resources/js/jquery.js"></script>
+		<script type="text/javascript">
+			function finalizaAgora(id) {
+				$.post("finalizaTarefa", {'id': id}, function() {
+					console.log($('#tarefa_'+id))
+					$('#tarefa_'+id).html('Finalizado');
+				});
+			}
+		</script>	
 	</body>
 </html>
