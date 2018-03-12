@@ -20,7 +20,7 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${tarefas}" var="tarefa">
-					<tr>
+					<tr id="tarefa_${tarefa.id}">
 						<td>${tarefa.id}</td>
 						<td>${tarefa.descricao}</td>
 						<td id="tarefa_${tarefa.id}">
@@ -40,15 +40,15 @@
 								<li><a href="mostraTarefa?id=${tarefa.id}">Alterar</a></li>
 							</ul>		
 						</td>
+					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 		<script type="text/javascript" src="resources/js/jquery.js"></script>
 		<script type="text/javascript">
 			function finalizaAgora(id) {
-				$.post("finalizaTarefa", {'id': id}, function() {
-					console.log($('#tarefa_'+id))
-					$('#tarefa_'+id).html('Finalizado');
+				$.post("finalizaTarefa", {'id': id}, function(resposta) {
+					$('#tarefa_'+id).html(resposta);
 				});
 			}
 		</script>	
