@@ -4,9 +4,13 @@ import java.util.Calendar;
 
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Tarefa {
 	private Long id;
 	private boolean finalizado;
+	
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Calendar dataFinalizacao;
 	
 	@Size(min=5, message="{tarefa.descricao.pequena}")

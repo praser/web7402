@@ -26,7 +26,7 @@ public class TarefasController {
 		JdbcTarefaDao dao = new JdbcTarefaDao();
 		dao.adiciona(tarefa);
 		
-		return "tarefa/adicionada";
+		return "redirect:listaTarefas";
 	}
 	
 	@RequestMapping("listaTarefas")
@@ -42,5 +42,26 @@ public class TarefasController {
 		JdbcTarefaDao dao = new JdbcTarefaDao();
 		dao.remove(tarefa);
 		return "redirect:listaTarefas";
+	}
+	
+	@RequestMapping("mostraTarefa")
+	public String mostra(Long id, Model model) {
+		JdbcTarefaDao dao = new JdbcTarefaDao();
+		model.addAttribute("tarefa", dao.buscaPorId(id));
+		return "tarefa/mostra";
+	}
+	
+	@RequestMapping("efetuaAlteracao")
+	public String  efetuaAlteracao(@Valid Tarefa tarefa, BindingResult validador, Model model) {
+		if (validador.hasErrors()) {
+			model.addAttribute("tarefa", tarefa);
+			return "redirect:mostraTarefa?id=" + tarefa.getId();
+		}
+		
+		JdbcTarefaDao dao = new JdbcTarefaDao();
+		dao.altera(tarefa);
+		
+		return "redirect:listaTarefas";
+		
 	}
 }
