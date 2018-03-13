@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h3>Bem vindo ${user.login}</h3>
+	<a href="destroySession">Sair</a>
 </body>
 </html>

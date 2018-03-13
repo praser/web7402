@@ -7,7 +7,7 @@
 <title>Login de unsuário</title>
 </head>
 <body>
-	<form action="create" method="post">
+	<form action="createSession" method="post">
 		<label for="login">Login</label>
 		<input type="text" id="login" name="login"/>
 		<br/><br/>

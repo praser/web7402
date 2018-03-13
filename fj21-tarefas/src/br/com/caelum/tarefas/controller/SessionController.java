@@ -11,12 +11,12 @@ import br.com.caelum.tarefas.modelo.Usuario;
 @Controller
 public class SessionController {
 
-	@RequestMapping("session/new")
+	@RequestMapping("newSession")
 	public String newSession() {
 		return "session/new";
 	}
 	
-	@RequestMapping("session/create")
+	@RequestMapping("createSession")
 	public String createSession(Usuario usuario, HttpSession session) {
 		JdbcUsuarioDao dao = new JdbcUsuarioDao();
 		if (dao.existeUsuario(usuario)) {
@@ -24,6 +24,12 @@ public class SessionController {
 			return "home/welcome";
 		}
 		
-		return "redirect:new";
+		return "redirect:newSession";
+	}
+	
+	@RequestMapping("destroySession")
+	public String destroySession(HttpSession session) {
+		session.invalidate();
+		return "redirect:newSession";
 	}
 }
