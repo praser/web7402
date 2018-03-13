@@ -36,7 +36,7 @@
 						</td>
 						<td>
 							<ul>
-								<li><a href="removeTarefa?id=${tarefa.id}">Remover</a></li>
+								<li><a href="#" onClick="removeAgora(${tarefa.id})">Remover</a></li>
 								<li><a href="mostraTarefa?id=${tarefa.id}">Alterar</a></li>
 							</ul>		
 						</td>
@@ -50,6 +50,12 @@
 				$.post("finalizaTarefa", {'id': id}, function(resposta) {
 					$('#tarefa_'+id).html(resposta);
 				});
+			}
+			
+			function removeAgora(id) {
+				$.post("removeTarefa", {'id': id}, function() {
+					$('#tarefa_'+id).remove();
+				})
 			}
 		</script>	
 	</body>

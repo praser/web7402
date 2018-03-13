@@ -38,11 +38,10 @@ public class TarefasController {
 		return "tarefa/lista";
 	}
 	
+	@ResponseBody
 	@RequestMapping("removeTarefa")
-	public String remove(Tarefa tarefa) {
-		JdbcTarefaDao dao = new JdbcTarefaDao();
-		dao.remove(tarefa);
-		return "redirect:listaTarefas";
+	public void remove(Tarefa tarefa) {
+		new JdbcTarefaDao().remove(tarefa);
 	}
 	
 	@RequestMapping("mostraTarefa")
