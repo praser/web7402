@@ -4,22 +4,21 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import br.com.caelum.tarefas.dao.JdbcTarefaDao;
+import br.com.caelum.tarefas.dao.TarefaDao;
 import br.com.caelum.tarefas.modelo.Tarefa;
 
+@Transactional
 @Controller
 public class TarefasController {
-	public final JdbcTarefaDao dao;
-	
 	@Autowired
-	public TarefasController(JdbcTarefaDao dao) {
-		this.dao = dao;
-	}
+	private TarefaDao dao;
+	
 	
 	@RequestMapping("novaTarefa")
 	public String form() {
