@@ -18,7 +18,7 @@
 		<br/>
 		
 		<label for="dataFinalizacao">Data de finalização</label>
-		<fmt:formatDate value="${tarefa.dataFinalizacao}" pattern="dd/MM/yyyy" var="dataFinalizacao"/>
+		<fmt:formatDate value="${tarefa.dataFinalizacao.time}" pattern="dd/MM/yyyy" var="dataFinalizacao"/>
 		<input type="text" id="dataFinalizacao" name="dataFinalizacao" value="${dataFinalizacao}" />
 		<br/>
 		
